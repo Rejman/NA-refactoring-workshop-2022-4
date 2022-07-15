@@ -7,6 +7,7 @@
 
 #include "IEventHandler.hpp"
 #include "SnakeInterface.hpp"
+#include "SnakeSegments.hpp"
 
 class Event;
 class IPort;
@@ -40,14 +41,15 @@ private:
 
     std::pair<int, int> m_mapDimension;
     std::pair<int, int> m_foodPosition;
-
+    //to delete
     struct Segment
     {
         int x;
         int y;
     };
-
     std::list<Segment> m_segments;
+    // to delete
+    SnakeSegments m_snakeSegments;
     Direction m_currentDirection;
 
     void handleTimeoutInd();
@@ -56,11 +58,15 @@ private:
     void handleFoodResp(std::unique_ptr<Event>);
     void handlePauseInd(std::unique_ptr<Event>);
 
+    // to delete
     bool isSegmentAtPosition(int x, int y) const;
     Segment calculateNewHead() const;
     void updateSegmentsIfSuccessfullMove(Segment const& newHead);
+    // to delete
     void addHeadSegment(Segment const& newHead);
+    // SnakeSegments
     void removeTailSegmentIfNotScored(Segment const& newHead);
+    // SnakeSegments
     void removeTailSegment();
 
     bool isPositionOutsideMap(int x, int y) const;

@@ -1,5 +1,8 @@
 #include <list>
 #include <memory>
+#include <functional>
+#include <stdexcept>
+#include <algorithm>
 
 class SnakeSegments{
 private:
@@ -11,11 +14,8 @@ private:
     std::list<Segment> m_segments;
 
 public:
-    void addSegment(const int& x, const int& y){
-        Segment seq;
-        seq.x = x;
-        seq.y = y;
-        m_segments.push_back(seq);
-    }
+    void addSegment(const int& x, const int& y);
 
+    bool isSegmentAtPosition(int x, int y) const;
+    
 };
